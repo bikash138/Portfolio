@@ -2,9 +2,11 @@
 import React, { useState } from 'react'
 import { Palette, Bird, Code, ExternalLink, Github } from 'lucide-react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
+import zivelle from '@/assets/project icons/zivelle.png'
 import { Badge } from './ui/badge';
 import Link from 'next/link';
 import { Button } from './ui/button';
+import Image from 'next/image';
 
 const Projects = () => {
 
@@ -14,7 +16,20 @@ const Projects = () => {
     setVisibleCards((prev)=>prev + 2)
   }
 
-    const projects = [
+  const projects = [
+    {
+      title: 'Zivelle',
+      description: 'Built a full-stack e-commerce platform with a seller dashboard for inventory and order management, enabling smooth buying and selling experiences.',
+      icon: {
+        src: zivelle,
+        alt: 'zivelle',
+        width: 24, 
+        height: 24
+      },
+      tags: ['Nextjs', 'Redis', 'PostgreSQL', 'Docker', 'AWS S3', 'Razorpay'],
+      link: 'https://zivelle.bikashdev.com',
+      github: 'https://github.com/bikash138/Zivelle'
+    },
     {
       title: 'Second Brain App',
       description: 'Personal knowledge management app with AI powered semantic search for thoughts like links, images, and docs.',
@@ -38,14 +53,6 @@ const Projects = () => {
       tags: ['Nextjs', 'Tailwind CSS', 'Websockets', 'WebRTC', 'Turborepo'],
       link: '',
       github: 'https://github.com/bikash138/Voxa'
-    },
-    {
-      title: 'E-Commerce App',
-      description: 'Built a full-stack e-commerce platform with a seller dashboard for inventory and order management, enabling smooth buying and selling experiences.',
-      icon: <Code className="w-6 h-6" />,
-      tags: ['React', 'Tailwind CSS', 'Express.js', 'MongoDB'],
-      link: '',
-      github: 'https://github.com/bikash138/E-Commerce-Website'
     }
   ];
 
@@ -61,8 +68,17 @@ const Projects = () => {
               <Card key={index} className="bg-gray-900/50 border-gray-800 hover:border-gray-700 transition-all duration-300 hover:bg-gray-900/70">
                 <CardHeader className="pb-4">
                   <div className="flex items-start justify-between mb-3">
-                    <div className="p-2 bg-blue-500/20 rounded-lg text-blue-400">
-                      {project.icon}
+                    <div className="p-2 bg-blue-500/20 rounded-lg text-blue-400 relative">
+                      {typeof project.icon === 'object' && 'src' in project.icon ? (
+                        <Image 
+                          src={project.icon.src} 
+                          alt={project.icon.alt} 
+                          width={project.icon.width} 
+                          height={project.icon.height} 
+                        />
+                      ) : (
+                        project.icon
+                      )}
                     </div>
                     <div className='flex space-x-4'>
                       <Link href={project.github} target="_blank" rel="noopener noreferrer">
