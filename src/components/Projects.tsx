@@ -31,12 +31,12 @@ const Projects = () => {
       github: 'https://github.com/bikash138/Zivelle'
     },
     {
-      title: 'Second Brain App',
+      title: 'Neurofy',
       description: 'Personal knowledge management app with AI powered semantic search for thoughts like links, images, and docs.',
       icon: <Palette className="w-6 h-6" />,
       tags: ['Nextjs', 'PostgreSQL', 'Langchain', 'QdrantDB', 'Docker'],
       link: '',
-      github: 'https://github.com/bikash138/Second-Brain-App'
+      github: 'https://github.com/bikash138/Neurofy'
     },
     {
       title: 'Voice Enabled Cursor',
