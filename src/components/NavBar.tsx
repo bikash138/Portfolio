@@ -1,15 +1,8 @@
-'use client'
-import React from 'react';
-import { motion } from 'framer-motion';
-import TwitterX from '../assets/TwitterX';
-import { 
-  Home, 
-  FileText, 
-  Github, 
-  Linkedin, 
-  Mail,
-  Sun
-} from 'lucide-react';
+"use client";
+import React from "react";
+import { motion } from "framer-motion";
+import TwitterX from "../assets/TwitterX";
+import { Home, Linkedin, Github, FileText, Mail, Sun } from "lucide-react";
 
 interface NavItem {
   id: string;
@@ -22,61 +15,60 @@ interface NavItem {
 const NavBar: React.FC = () => {
   const navItems: NavItem[] = [
     {
-      id: 'home',
+      id: "home",
       icon: <Home className="w-5 h-5" />,
-      label: 'Home',
-      href: '#home'
+      label: "Home",
+      href: "#home",
     },
     {
-      id: 'portfolio',
+      id: "portfolio",
       icon: <FileText className="w-5 h-5" />,
-      label: 'Portfolio',
-      href: '#projects'
+      label: "Portfolio",
+      href: "#projects",
     },
     {
-      id: 'github',
+      id: "github",
       icon: <Github className="w-5 h-5" />,
-      label: 'GitHub',
-      href: 'https://github.com/bikash138'
+      label: "GitHub",
+      href: "https://github.com/bikash138",
     },
     {
-      id: 'linkedin',
-      icon: <Linkedin className="w-5 h-5" />,
-      label: 'LinkedIn',
-      href: 'https://www.linkedin.com/in/bikash-shaw-5ab74727b/'
+      id: "linkedin",
+      icon: <Linkedin className="w-6 h-6" />,
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/bikash-shaw-5ab74727b/",
     },
     {
-      id: 'twitter',
-      icon: <TwitterX className='w-5 h-5'/>,
-      label: 'Twitter',
-      href: 'https://x.com/Bikash__Shaw'
+      id: "twitter",
+      icon: <TwitterX className="w-5 h-5" />,
+      label: "Twitter",
+      href: "https://x.com/Bikash__Shaw",
     },
     {
-      id: 'email',
+      id: "email",
       icon: <Mail className="w-5 h-5" />,
-      label: 'Email',
-      href: 'mailto:bshaw1352@gmail.com'
+      label: "Email",
+      href: "mailto:bshaw1352@gmail.com",
     },
     {
-      id: 'theme',
+      id: "theme",
       icon: <Sun className="w-5 h-5" />,
-      label: 'Theme',
-      onClick: () => alert('Light Mode? Are you trying to blind the dev community!!')
-    }
+      label: "Theme",
+      onClick: () =>
+        alert("Light Mode? Are you trying to blind the dev community!!"),
+    },
   ];
 
   const handleItemClick = (item: NavItem) => {
     if (item.href) {
-      if (item.href.startsWith('#')) {
-        // Smooth scroll to section
+      if (item.href.startsWith("#")) {
         const element = document.querySelector(item.href);
-        element?.scrollIntoView({ behavior: 'smooth' });
+        element?.scrollIntoView({ behavior: "smooth" });
       } else {
-        // External link
-        window.open(item.href, '_blank');
+        window.open(item.href, "_blank");
       }
     }
-    
+
     if (item.onClick) {
       item.onClick();
     }
@@ -99,76 +91,76 @@ const NavBar: React.FC = () => {
               key={item.id}
               onClick={() => handleItemClick(item)}
               className="relative p-3 rounded-full text-gray-400 hover:text-white transition-colors duration-300 cursor-pointer"
-              whileHover={{ 
+              whileHover={{
                 scale: 1.2,
                 rotate: [0, -5, 5, -3, 3, 0],
               }}
-              whileTap={{ 
+              whileTap={{
                 scale: 0.8,
-                rotate: [0, -10, 10, -5, 5, 0]
+                rotate: [0, -10, 10, -5, 5, 0],
               }}
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ 
-                duration: 0.4, 
+              transition={{
+                duration: 0.4,
                 delay: index * 0.1,
                 ease: "easeOut",
                 scale: {
                   type: "spring",
                   stiffness: 300,
-                  damping: 10
+                  damping: 10,
                 },
                 rotate: {
                   type: "spring",
                   stiffness: 400,
-                  damping: 8
-                }
+                  damping: 8,
+                },
               }}
             >
               {/* Jelly hover background */}
               <motion.div
                 className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-600/20 rounded-full opacity-0"
-                whileHover={{ 
+                whileHover={{
                   opacity: 1,
                   scale: [1, 1.3, 1.1, 1.2, 1],
                 }}
-                transition={{ 
+                transition={{
                   duration: 0.6,
                   ease: "easeInOut",
                   scale: {
                     type: "spring",
                     stiffness: 200,
-                    damping: 8
-                  }
+                    damping: 8,
+                  },
                 }}
               />
-              
+
               {/* Icon with jelly effect */}
               <motion.div
                 className="relative z-10"
                 whileHover={{
                   scale: [1, 1.2, 0.9, 1.1, 1],
-                  rotate: [0, 5, -5, 3, 0]
+                  rotate: [0, 5, -5, 3, 0],
                 }}
                 transition={{
                   duration: 0.5,
-                  ease: "easeInOut"
+                  ease: "easeInOut",
                 }}
               >
                 {item.icon}
               </motion.div>
-              
+
               {/* Tooltip */}
               <motion.div
                 className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 bg-black/90 text-white text-xs px-2 py-1 rounded-md opacity-0 pointer-events-none whitespace-nowrap"
-                whileHover={{ 
-                  opacity: 1, 
+                whileHover={{
+                  opacity: 1,
                   y: 2,
-                  scale: [0.8, 1.1, 1]
+                  scale: [0.8, 1.1, 1],
                 }}
-                transition={{ 
+                transition={{
                   duration: 0.3,
-                  ease: "easeOut"
+                  ease: "easeOut",
                 }}
               >
                 {item.label}
@@ -177,7 +169,7 @@ const NavBar: React.FC = () => {
             </motion.button>
           ))}
         </motion.div>
-        
+
         {/* Floating particles effect */}
         <div className="absolute inset-0 pointer-events-none">
           {[...Array(5)].map((_, i) => (
@@ -188,13 +180,13 @@ const NavBar: React.FC = () => {
                 x: [0, Math.random() * 80 - 40],
                 y: [0, Math.random() * 80 - 40],
                 opacity: [0, 0.8, 0],
-                scale: [0, 1, 0]
+                scale: [0, 1, 0],
               }}
               transition={{
                 duration: 4,
                 repeat: Infinity,
                 delay: i * 0.8,
-                ease: "easeInOut"
+                ease: "easeInOut",
               }}
               style={{
                 left: `${20 + Math.random() * 60}%`,

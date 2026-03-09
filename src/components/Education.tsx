@@ -7,11 +7,11 @@ const Education = () => {
   return (
    <section className="py-16 px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-center md:text-left mb-12">
             Education
           </h2>
           
-          <Card className="bg-gray-900/50 border-gray-800 max-w-2xl mx-auto">
+          <Card className="bg-gray-900/50 border-gray-800 max-w-2xl mx-auto md:ml-0 md:mr-auto">
             <CardHeader>
               <div className="flex justify-between items-start">
                 <div className="flex items-center gap-3">
