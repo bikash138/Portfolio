@@ -12,10 +12,32 @@ const dmSans = DM_Sans({
   subsets: ["latin"],
 });
 
-
 export const metadata: Metadata = {
   title: "Bikash Shaw",
   description: "Created by Bikash",
+  openGraph: {
+    title: "Bikash Shaw",
+    description:
+      "Full Stack Developer, passionate for building scalable softwares.",
+    url: "https://bikashshaw.in",
+    siteName: "Bikash Shaw",
+    images: [
+      {
+        url: "/og-image.webp",
+        width: 1200,
+        height: 630,
+        alt: "Bikash Shaw",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Bikash Shaw",
+    description:
+      "Full Stack Developer, passionate for building scalable softwares.",
+    images: ["/og-image.webp"],
+  },
 };
 
 export default function RootLayout({
