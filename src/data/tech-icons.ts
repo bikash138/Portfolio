@@ -11,6 +11,8 @@ import turborepo from "@/assets/tech-icons/turborepo.png";
 export type TechIcon = {
   name: string;
   deviconClass?: string;
+  deviconClassLight?: string;
+  deviconClassDark?: string;
   icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   image?: string | { src: string };
 };
@@ -27,11 +29,15 @@ export const techIcons: Record<string, TechIcon> = {
   Nextjs: {
     name: "Next.js",
     deviconClass: "devicon-nextjs-plain",
+    deviconClassLight: "devicon-nextjs-plain colored",
+    deviconClassDark: "devicon-nextjs-plain",
   },
   Clerk: { name: "Clerk", image: clerk },
   Express: {
     name: "Express",
     deviconClass: "devicon-express-original",
+    deviconClassLight: "devicon-express-original colored",
+    deviconClassDark: "devicon-express-original",
   },
   PostgreSQL: {
     name: "PostgreSQL",

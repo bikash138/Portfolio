@@ -1,5 +1,6 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useTheme } from "next-themes";
 import { ExternalLink, Github } from "lucide-react";
 import {
   Card,
@@ -17,33 +18,38 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { DevIcon } from "@/components/DevIcon";
 
 const Projects = () => {
   const [visibleCards, setVisibleCards] = useState(4);
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
 
   const handleMore = () => {
     setVisibleCards((prev) => prev + 2);
   };
 
   return (
-    <section id="projects" className="py-16 px-6">
-      <div className="max-w-4xl mx-auto">
+    <section id="projects" className="py-16">
+      <div>
         <h2 className="text-3xl md:text-4xl font-bold text-center md:text-left mb-12">
           Projects I&apos;ve Built
         </h2>
 
-        <div className="grid md:grid-cols-2 gap-6 md:items-stretch">
+        <div className="grid md:grid-cols-2 gap-8 md:items-stretch">
           {projects.slice(0, visibleCards).map((project, index) => (
             <Card
               key={index}
-              className="bg-gray-900/50 border-2 border-dotted border-gray-900 hover:border-gray-800 transition-all duration-300 hover:bg-gray-900/70 overflow-hidden p-0 h-full"
+              className="bg-card border-2 border-dotted border-border hover:border-muted-foreground/25 transition-all duration-300 hover:bg-muted/25 dark:hover:bg-muted/40 overflow-hidden p-0 h-full"
             >
               {"preview" in project && project.preview && (
                 <Link
                   href={project.link || project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block relative w-full aspect-video overflow-hidden rounded-t-xl bg-gray-800 hover:opacity-90 transition-opacity"
+                  className="block relative w-full aspect-video overflow-hidden rounded-t-xl"
                 >
                   <Image
                     src={project.preview.src}
@@ -56,11 +62,19 @@ const Projects = () => {
               <CardHeader className="pb-2 pt-6 shrink-0 min-h-[140px]">
                 <div className="flex items-center justify-between gap-4 mb-3">
                   <div className="flex items-center gap-3 min-w-0">
-                    <div className="p-2 bg-blue-500/20 rounded-lg text-blue-400 relative shrink-0">
+                    <div className="p-2 bg-primary/20 rounded-lg text-primary relative shrink-0">
                       {typeof project.icon === "object" &&
                       "src" in project.icon ? (
                         <Image
-                          src={project.icon.src}
+                          src={
+                            "srcLight" in project.icon &&
+                            "srcDark" in project.icon &&
+                            mounted
+                              ? resolvedTheme === "dark"
+                                ? project.icon.srcDark!
+                                : project.icon.srcLight!
+                              : project.icon.src
+                          }
                           alt={project.icon.alt}
                           width={project.icon.width}
                           height={project.icon.height}
@@ -69,7 +83,7 @@ const Projects = () => {
                         <project.icon className="w-6 h-6" />
                       )}
                     </div>
-                    <CardTitle className="text-white text-lg font-semibold truncate">
+                    <CardTitle className="text-foreground text-lg font-semibold truncate">
                       {project.title}
                     </CardTitle>
                   </div>
@@ -80,7 +94,7 @@ const Projects = () => {
                       rel="noopener noreferrer"
                       aria-label="GitHub"
                     >
-                      <Github className="w-5 h-5 text-gray-400 hover:text-white transition-colors cursor-pointer" />
+                      <Github className="w-5 h-5 text-muted-foreground hover:text-foreground transition-colors cursor-pointer" />
                     </Link>
                     {project.link && (
                       <Link
@@ -89,12 +103,12 @@ const Projects = () => {
                         rel="noopener noreferrer"
                         aria-label="Live demo"
                       >
-                        <ExternalLink className="w-5 h-5 text-gray-400 hover:text-white transition-colors cursor-pointer" />
+                        <ExternalLink className="w-5 h-5 text-muted-foreground hover:text-foreground transition-colors cursor-pointer" />
                       </Link>
                     )}
                   </div>
                 </div>
-                <CardDescription className="text-gray-400 text-sm leading-relaxed line-clamp-3">
+                <CardDescription className="text-muted-foreground text-sm leading-relaxed line-clamp-3">
                   {project.description}
                 </CardDescription>
               </CardHeader>
@@ -110,7 +124,7 @@ const Projects = () => {
                     return (
                       <Tooltip key={tagIndex}>
                         <TooltipTrigger asChild>
-                          <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gray-800/80 p-1.5 cursor-default text-gray-300">
+                          <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-muted p-1.5 cursor-default text-muted-foreground">
                             {IconComponent ? (
                               <IconComponent className="w-5 h-5" />
                             ) : imageSrc ? (
@@ -121,8 +135,8 @@ const Projects = () => {
                                 height={20}
                                 className="object-contain w-5 h-5"
                               />
-                            ) : tag.deviconClass ? (
-                              <i className={`${tag.deviconClass} text-lg`} />
+                            ) : tag.deviconClass || tag.deviconClassLight ? (
+                              <DevIcon iconConfig={tag} className="text-lg" />
                             ) : null}
                           </div>
                         </TooltipTrigger>
@@ -131,6 +145,13 @@ const Projects = () => {
                     );
                   })}
                 </div>
+                <Link
+                  href={`/${project.slug}`}
+                  className="inline-flex items-center gap-1 mt-4 text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Read More
+                  <span aria-hidden>→</span>
+                </Link>
               </CardContent>
             </Card>
           ))}

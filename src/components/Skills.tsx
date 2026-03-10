@@ -1,19 +1,17 @@
-"use client";
-
 import { skills, getSkillIcon } from "@/data/skills";
 import { Badge } from "@/components/ui/badge";
+import { DevIcon } from "@/components/DevIcon";
 import Image from "next/image";
-import React from "react";
 
 const Skills = () => {
   return (
-    <section className="py-16 px-6">
-      <div className="max-w-4xl mx-auto">
+    <section className="py-16">
+      <div>
         <h2 className="text-3xl md:text-4xl font-bold text-center md:text-left mb-12">
-          Skills
+          Skills & Tools
         </h2>
 
-        <div className="flex flex-wrap gap-3 justify-start">
+        <div className="flex flex-wrap gap-3 justify-center md:justify-start">
           {skills.map((skill, index) => {
             const iconConfig = getSkillIcon(skill);
             const IconComponent = iconConfig?.icon;
@@ -27,7 +25,7 @@ const Skills = () => {
               <Badge
                 key={index}
                 variant="secondary"
-                className="bg-gray-800 text-gray-300 hover:bg-gray-700 px-3 py-2 text-sm transition-colors border-2 border-dotted border-gray-600 flex items-center gap-2 rounded-lg"
+                className="bg-muted text-muted-foreground hover:bg-accent px-3 py-2 text-sm transition-colors border-2 border-dotted border-border flex items-center gap-2 rounded-lg"
               >
                 {IconComponent ? (
                   <IconComponent className="w-4 h-4 shrink-0" />
@@ -39,8 +37,12 @@ const Skills = () => {
                     height={16}
                     className="object-contain shrink-0"
                   />
-                ) : iconConfig?.deviconClass ? (
-                  <i className={`${iconConfig.deviconClass} text-base shrink-0`} />
+                ) : iconConfig?.deviconClass ||
+                  iconConfig?.deviconClassLight ? (
+                  <DevIcon
+                    iconConfig={iconConfig}
+                    className="text-base shrink-0"
+                  />
                 ) : null}
                 {skill}
               </Badge>
@@ -52,4 +54,4 @@ const Skills = () => {
   );
 };
 
-export default Skills
+export default Skills;
