@@ -11,7 +11,7 @@ const Education = () => {
           Education
         </h2>
 
-        <Card className="bg-card border-border">
+        <Card className="bg-card border-2 border-dotted">
           <CardHeader>
             <div className="flex justify-between items-start">
               <div className="flex items-center gap-3">
