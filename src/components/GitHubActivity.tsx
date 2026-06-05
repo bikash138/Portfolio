@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import GitHubCalendar from "react-github-calendar";
 import Link from "next/link";
-import { Github } from "lucide-react";
+import { Github, AlertCircle } from "lucide-react";
 import { useTheme } from "next-themes";
 
 const GITHUB_USERNAME = "bikash138";
@@ -15,6 +15,38 @@ const lightTheme = {
 const darkTheme = {
   dark: ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"],
 };
+
+class CalendarErrorBoundary extends React.Component<
+  { children: React.ReactNode },
+  { hasError: boolean }
+> {
+  state = { hasError: false };
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="flex flex-col items-center justify-center gap-3 py-8 text-muted-foreground">
+          <AlertCircle className="w-8 h-8 text-border" />
+          <p className="text-sm">GitHub activity unavailable right now.</p>
+          <Link
+            href={`https://github.com/${GITHUB_USERNAME}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs underline underline-offset-4 hover:text-foreground transition-colors"
+          >
+            View profile on GitHub
+          </Link>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+
 
 const GitHubActivity = () => {
   const { resolvedTheme } = useTheme();
@@ -38,21 +70,22 @@ const GitHubActivity = () => {
             className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors border-2 border-dotted border-border rounded-lg px-3 py-2"
           >
             <Github className="w-5 h-5" />
-            <span className="text-sm">View Profile</span>
+            <span className="hidden sm:inline text-sm">View Profile</span>
           </Link>
         </div>
 
         <div className="rounded-xl bg-card border-2 border-dotted border-border p-6 overflow-x-auto">
-          {mounted && (
+          <CalendarErrorBoundary>
             <GitHubCalendar
               username={GITHUB_USERNAME}
-              theme={isDark ? darkTheme : lightTheme}
-              colorScheme={isDark ? "dark" : "light"}
+              theme={mounted && isDark ? darkTheme : lightTheme}
+              colorScheme={mounted && isDark ? "dark" : "light"}
               blockSize={12}
               blockMargin={4}
               fontSize={14}
+              throwOnError
             />
-          )}
+          </CalendarErrorBoundary>
         </div>
       </div>
     </section>

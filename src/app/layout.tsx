@@ -72,7 +72,6 @@ export default function RootLayout({
                 </div>
               </div>
               <div className="hidden md:block fixed top-16 bottom-0 left-20 right-20 pointer-events-none z-40">
-                <div className="max-w-4xl mx-auto h-full border-l-4 border-r-4 border-t-4 border-dotted border-border" />
               </div>
             </div>
           </TooltipProvider>

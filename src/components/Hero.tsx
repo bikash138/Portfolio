@@ -15,10 +15,11 @@ const Hero = () => {
         <div className="order-1 md:order-2 shrink-0 w-32 h-32 md:w-40 md:h-40 overflow-hidden border-2 border-border relative rounded-lg">
           <Image
             alt="self picture"
-            src={self.src}
+            src={self}
             fill
             className="object-cover"
             priority
+            placeholder="blur"
           />
         </div>
         <div className="order-2 md:order-1 text-center md:text-left flex-1 mt-4 md:mt-8 mr-0 md:mr-12">
@@ -33,11 +34,11 @@ const Hero = () => {
             I mostly enjoys{" "}
             <span className="text-primary font-medium">building</span> scalable{" "}
             <span className="text-primary font-medium">backend systems</span>{" "}
+            with <span className="text-primary font-medium">applied AI</span>{" "}
             using TypeScript. Currently, I&apos;m learning backend topics while{" "}
             <span className="text-primary font-medium">building</span> projects
-            and{" "}
-            <span className="text-primary font-medium">documenting</span> through
-            blogs. I would love to{" "}
+            and <span className="text-primary font-medium">documenting</span>{" "}
+            through blogs. I would love to{" "}
             <span className="text-primary font-medium">collaborate</span> with
             people with similar mindset.
           </p>

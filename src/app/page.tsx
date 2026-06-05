@@ -5,21 +5,21 @@ import Blog from "@/components/Blog";
 import Skills from "@/components/Skills";
 import GitHubActivity from "@/components/GitHubActivity";
 import Education from "@/components/Education";
-import { Separator } from "@/components/ui/separator";
+import GradientSeparator from "@/components/GradientSeparator";
 
 function App() {
   return (
     <>
       <Hero />
-      <Separator />
+      <GradientSeparator />
       <Projects />
-      <Separator />
+      <GradientSeparator />
       <Blog />
-      <Separator />
+      <GradientSeparator />
       <Skills />
-      <Separator />
+      <GradientSeparator />
       <GitHubActivity />
-      <Separator />
+      <GradientSeparator />
       <Education />
     </>
   );
