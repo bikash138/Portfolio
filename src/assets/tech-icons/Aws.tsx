@@ -20,4 +20,3 @@ const Aws: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
 );
 
 export default Aws;
-          

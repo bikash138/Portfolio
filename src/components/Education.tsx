@@ -7,15 +7,15 @@ const Education = () => {
   return (
     <section className="py-16">
       <div>
-        <h2 className="text-3xl md:text-4xl font-bold text-center md:text-left mb-12">
+        <h2 className="mb-12 text-center text-3xl font-bold md:text-left md:text-4xl">
           Education
         </h2>
 
         <Card className="bg-card border-2 border-dotted">
           <CardHeader>
-            <div className="flex justify-between items-start">
+            <div className="flex items-start justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center">
+                <div className="bg-muted flex h-12 w-12 items-center justify-center rounded-full">
                   <Image
                     alt="college"
                     width={48}
@@ -33,7 +33,7 @@ const Education = () => {
                   </CardDescription>
                 </div>
               </div>
-              <span className="text-sm text-muted-foreground">
+              <span className="text-muted-foreground text-sm">
                 Expected July 2026
               </span>
             </div>

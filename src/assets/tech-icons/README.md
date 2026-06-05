@@ -1,6 +1,7 @@
 # Technology Icons
 
 Supports three icon sources (priority: icon > image > deviconClass):
+
 1. **Devicon** – Set `deviconClass` (e.g., `"devicon-docker-plain colored"`)
 2. **Custom SVG component** – Create a React component and set `icon`
 3. **Image file** – Import PNG/SVG/WebP and set `image`

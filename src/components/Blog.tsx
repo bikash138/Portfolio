@@ -7,7 +7,7 @@ const Blog = () => {
   return (
     <section id="blog" className="py-16">
       <div>
-        <h2 className="text-3xl md:text-4xl font-bold text-center md:text-left mb-12">
+        <h2 className="mb-12 text-center text-3xl font-bold md:text-left md:text-4xl">
           Blogs
         </h2>
 
@@ -20,20 +20,20 @@ const Blog = () => {
               rel="noopener noreferrer"
               className="block"
             >
-              <Card className="bg-card border-2 border-dotted border-border hover:border-muted-foreground/25 transition-all duration-300 hover:bg-muted/25 dark:hover:bg-muted/40 overflow-hidden group">
+              <Card className="bg-card border-border hover:border-muted-foreground/25 hover:bg-muted/25 dark:hover:bg-muted/40 group overflow-hidden border-2 border-dotted transition-all duration-300">
                 <CardContent className="p-4">
-                  <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                  <h3 className="text-foreground group-hover:text-primary text-xl font-bold transition-colors">
                     {post.title}
                   </h3>
-                  <p className="text-muted-foreground text-sm mt-2">
+                  <p className="text-muted-foreground mt-2 text-sm">
                     {post.description}
                   </p>
-                  <div className="flex items-center justify-between gap-4 mt-3">
-                    <div className="flex items-center gap-2 text-muted-foreground text-sm">
-                      <Calendar className="w-4 h-4 shrink-0" />
+                  <div className="mt-3 flex items-center justify-between gap-4">
+                    <div className="text-muted-foreground flex items-center gap-2 text-sm">
+                      <Calendar className="h-4 w-4 shrink-0" />
                       <span>{post.date}</span>
                     </div>
-                    <span className="text-muted-foreground text-sm shrink-0 group-hover:text-primary transition-colors">
+                    <span className="text-muted-foreground group-hover:text-primary shrink-0 text-sm transition-colors">
                       Read more →
                     </span>
                   </div>

@@ -3,9 +3,12 @@ import Inngest from "@/assets/tech-icons/Inngest";
 import e2bIcon from "@/assets/tech-icons/e2b.png";
 import Langchain from "@/assets/tech-icons/Langchain";
 import Langgraph from "@/assets/tech-icons/Langgraph";
-import rzp from "@/assets/tech-icons/razorpay.png"
-import clerk from "@/assets/tech-icons/clerk.ico"
-import webrtc from "@/assets/tech-icons/webrtc.png"
+import rzp from "@/assets/tech-icons/razorpay.png";
+import clerk from "@/assets/tech-icons/clerk.ico";
+import zustand from "@/assets/tech-icons/zustand.ico";
+import trpc from "@/assets/tech-icons/tRPC.ico";
+import betterAuth from "@/assets/tech-icons/better-auth.ico";
+import webrtc from "@/assets/tech-icons/webrtc.png";
 import turborepo from "@/assets/tech-icons/turborepo.png";
 
 export type TechIcon = {
@@ -48,7 +51,7 @@ export const techIcons: Record<string, TechIcon> = {
     name: "AWS",
     deviconClass: "devicon-amazonwebservices-plain-wordmark colored",
   },
-  "AWS S3": {
+  AWS_S3: {
     name: "AWS S3",
     deviconClass: "devicon-amazonwebservices-plain-wordmark colored",
   },
@@ -76,12 +79,21 @@ export const techIcons: Record<string, TechIcon> = {
     name: "Turborepo",
     image: turborepo,
   },
-  JavaScript: { name: "JavaScript", deviconClass: "devicon-javascript-plain colored" },
-  TypeScript: { name: "TypeScript", deviconClass: "devicon-typescript-plain colored" },
+  JavaScript: {
+    name: "JavaScript",
+    deviconClass: "devicon-javascript-plain colored",
+  },
+  TypeScript: {
+    name: "TypeScript",
+    deviconClass: "devicon-typescript-plain colored",
+  },
   "C++": { name: "C++", deviconClass: "devicon-cplusplus-plain colored" },
   React: { name: "React", deviconClass: "devicon-react-original colored" },
   Prisma: { name: "Prisma", deviconClass: "devicon-prisma-plain" },
   MongoDB: { name: "MongoDB", deviconClass: "devicon-mongodb-plain colored" },
   Nodejs: { name: "Node.js", deviconClass: "devicon-nodejs-plain colored" },
   Git: { name: "Git", deviconClass: "devicon-git-plain colored" },
+  Zustand: { name: "Zustand", image: zustand },
+  tRPC: { name: "tRPC", image: trpc },
+  BetterAuth: { name: "Better Auth", image: betterAuth },
 };

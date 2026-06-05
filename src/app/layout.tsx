@@ -63,16 +63,15 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <TooltipProvider>
-            <div className="min-h-screen bg-background text-foreground pt-16">
+            <div className="bg-background text-foreground min-h-screen pt-16">
               <NavBar />
               <div className="px-4 md:px-20">
-                <div className="max-w-4xl mx-auto px-4 md:px-6">
+                <div className="mx-auto max-w-4xl px-4 md:px-6">
                   {children}
                   <Footer />
                 </div>
               </div>
-              <div className="hidden md:block fixed top-16 bottom-0 left-20 right-20 pointer-events-none z-40">
-              </div>
+              <div className="pointer-events-none fixed top-16 right-20 bottom-0 left-20 z-40 hidden md:block"></div>
             </div>
           </TooltipProvider>
         </ThemeProvider>

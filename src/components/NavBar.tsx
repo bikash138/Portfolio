@@ -20,46 +20,47 @@ const NavBar: React.FC = () => {
 
   React.useEffect(() => setMounted(true), []);
 
-  const toggleTheme = () => setTheme(resolvedTheme === "dark" ? "light" : "dark");
+  const toggleTheme = () =>
+    setTheme(resolvedTheme === "dark" ? "light" : "dark");
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border">
+    <div className="bg-background/80 border-border fixed top-0 right-0 left-0 z-50 border-b backdrop-blur-xl">
       <div className="px-4 md:px-20">
-        <div className="max-w-4xl mx-auto px-4 md:px-6 py-4 flex items-center justify-between">
-        <nav className="flex items-center gap-8">
-          {navLinks.map((link) => {
-            const isActive =
-              link.href === "/resume"
-                ? pathname === "/resume"
-                : pathname === "/" && link.href === "/";
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`text-sm font-medium transition-colors ${
-                  isActive
-                    ? "text-foreground"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
-        </nav>
+        <div className="mx-auto flex max-w-4xl items-center justify-between px-4 py-4 md:px-6">
+          <nav className="flex items-center gap-8">
+            {navLinks.map((link) => {
+              const isActive =
+                link.href === "/resume"
+                  ? pathname === "/resume"
+                  : pathname === "/" && link.href === "/";
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`text-sm font-medium transition-colors ${
+                    isActive
+                      ? "text-foreground"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+          </nav>
 
           <div className="flex items-center gap-3">
-          <button
-            onClick={toggleTheme}
-            className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer"
-            aria-label="Toggle theme"
-          >
-            {mounted && resolvedTheme === "light" ? (
-              <Moon className="w-5 h-5" />
-            ) : (
-              <Sun className="w-5 h-5" />
-            )}
-          </button>
+            <button
+              onClick={toggleTheme}
+              className="text-muted-foreground hover:text-foreground hover:bg-muted cursor-pointer rounded-lg p-2 transition-colors"
+              aria-label="Toggle theme"
+            >
+              {mounted && resolvedTheme === "light" ? (
+                <Moon className="h-5 w-5" />
+              ) : (
+                <Sun className="h-5 w-5" />
+              )}
+            </button>
           </div>
         </div>
       </div>

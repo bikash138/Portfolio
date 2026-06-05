@@ -3,8 +3,8 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ExternalLink, Github } from "lucide-react";
-import { getProjectBySlug, projects } from "@/data/projects";
-import type { Project } from "@/data/projects";
+import { getProjectBySlug, projects } from "@/data/projects/index";
+import type { Project } from "@/data/projects/index";
 import { DevIcon } from "@/components/DevIcon";
 import type { TechIcon } from "@/data/tech-icons";
 
@@ -37,15 +37,15 @@ export default async function ProjectPage({ params }: Props) {
     <article className="py-12 pb-20">
       <Link
         href="/#projects"
-        className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8"
+        className="text-muted-foreground hover:text-foreground mb-8 inline-flex items-center gap-2 text-sm transition-colors"
       >
-        <ArrowLeft className="w-4 h-4" />
+        <ArrowLeft className="h-4 w-4" />
         Back to projects
       </Link>
 
       <header className="mb-12">
         {project.preview ? (
-          <div className="relative w-full aspect-video rounded-xl overflow-hidden border-2 border-dotted border-border bg-muted">
+          <div className="border-border bg-muted relative aspect-video w-full overflow-hidden rounded-xl border-2 border-dotted">
             <Image
               src={project.preview.src}
               alt={project.preview.alt}
@@ -56,8 +56,10 @@ export default async function ProjectPage({ params }: Props) {
             />
           </div>
         ) : (
-          <div className="w-full aspect-video rounded-xl overflow-hidden border-2 border-dotted border-border bg-muted flex items-center justify-center">
-            {typeof project.icon === "object" && project.icon !== null && "src" in project.icon ? (
+          <div className="border-border bg-muted flex aspect-video w-full items-center justify-center overflow-hidden rounded-xl border-2 border-dotted">
+            {typeof project.icon === "object" &&
+            project.icon !== null &&
+            "src" in project.icon ? (
               <Image
                 src={project.icon.src}
                 alt={project.icon.alt}
@@ -67,15 +69,19 @@ export default async function ProjectPage({ params }: Props) {
               />
             ) : (
               (() => {
-                const IconComponent = project.icon as React.ComponentType<{ className?: string }>;
-                return <IconComponent className="w-24 h-24 text-muted-foreground/50" />;
+                const IconComponent = project.icon as React.ComponentType<{
+                  className?: string;
+                }>;
+                return (
+                  <IconComponent className="text-muted-foreground/50 h-24 w-24" />
+                );
               })()
             )}
           </div>
         )}
 
-        <div className="mt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <h1 className="text-3xl md:text-4xl font-bold tracking-tight">
+        <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <h1 className="text-3xl font-bold tracking-tight md:text-4xl">
             {project.title}
           </h1>
           <div className="flex items-center gap-3">
@@ -84,9 +90,9 @@ export default async function ProjectPage({ params }: Props) {
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors border-2 border-dotted border-border rounded-lg px-3 py-2"
+                className="text-muted-foreground hover:text-foreground border-border inline-flex items-center gap-2 rounded-lg border-2 border-dotted px-3 py-2 text-sm transition-colors"
               >
-                <ExternalLink className="w-4 h-4" />
+                <ExternalLink className="h-4 w-4" />
                 Live demo
               </Link>
             )}
@@ -94,9 +100,9 @@ export default async function ProjectPage({ params }: Props) {
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors border-2 border-dotted border-border rounded-lg px-3 py-2"
+              className="text-muted-foreground hover:text-foreground border-border inline-flex items-center gap-2 rounded-lg border-2 border-dotted px-3 py-2 text-sm transition-colors"
             >
-              <Github className="w-4 h-4" />
+              <Github className="h-4 w-4" />
               Source
             </Link>
           </div>
@@ -105,12 +111,19 @@ export default async function ProjectPage({ params }: Props) {
 
       <div className="max-w-none">
         <section className="mb-16">
-          <h2 className="text-2xl font-bold tracking-tight mb-6 border-b border-border pb-2">
+          <h2 className="border-border mb-6 border-b pb-2 text-2xl font-bold tracking-tight">
             About Project
           </h2>
-          <p className="text-muted-foreground leading-relaxed text-lg">
-            {aboutProject}
-          </p>
+          <div className="space-y-4">
+            {aboutProject.split("\n\n").map((para, i) => (
+              <p
+                key={i}
+                className="text-muted-foreground text-lg leading-relaxed"
+              >
+                {para}
+              </p>
+            ))}
+          </div>
 
           {architectureImages.length > 0 && (
             <div className="mt-8 space-y-6">
@@ -119,7 +132,7 @@ export default async function ProjectPage({ params }: Props) {
                 {architectureImages.map((img, i) => (
                   <div
                     key={i}
-                    className="relative w-full aspect-video rounded-xl overflow-hidden border-2 border-dotted border-border bg-muted"
+                    className="border-border bg-muted relative aspect-video w-full overflow-hidden rounded-xl border-2 border-dotted"
                   >
                     <Image
                       src={img.src}
@@ -137,10 +150,10 @@ export default async function ProjectPage({ params }: Props) {
 
         {challenges.length > 0 && (
           <section className="mb-16">
-            <h2 className="text-2xl font-bold tracking-tight mb-6 border-b border-border pb-2">
+            <h2 className="border-border mb-6 border-b pb-2 text-2xl font-bold tracking-tight">
               Challenges
             </h2>
-            <ul className="space-y-3 list-disc list-inside text-muted-foreground leading-relaxed text-lg marker:text-primary">
+            <ul className="text-muted-foreground marker:text-primary list-outside list-disc space-y-3 pl-5 text-lg leading-relaxed">
               {challenges.map((challenge, i) => (
                 <li key={i}>{challenge}</li>
               ))}
@@ -149,7 +162,7 @@ export default async function ProjectPage({ params }: Props) {
         )}
 
         <section>
-          <h2 className="text-2xl font-bold tracking-tight mb-6 border-b border-border pb-2">
+          <h2 className="border-border mb-6 border-b pb-2 text-2xl font-bold tracking-tight">
             Tech Stack
           </h2>
           <div className="flex flex-wrap gap-3">
@@ -163,20 +176,20 @@ export default async function ProjectPage({ params }: Props) {
               return (
                 <div
                   key={index}
-                  className="flex items-center gap-2 px-4 py-2 rounded-lg bg-muted border-2 border-dotted border-border text-muted-foreground"
+                  className="bg-muted border-border text-muted-foreground flex items-center gap-2 rounded-lg border-2 border-dotted px-4 py-2"
                 >
                   {IconComponent ? (
-                    <IconComponent className="w-5 h-5 shrink-0" />
+                    <IconComponent className="h-5 w-5 shrink-0" />
                   ) : imageSrc ? (
                     <Image
                       src={imageSrc}
                       alt={tag.name}
                       width={20}
                       height={20}
-                      className="object-contain w-5 h-5 shrink-0"
+                      className="h-5 w-5 shrink-0 object-contain"
                     />
                   ) : tag.deviconClass || tag.deviconClassLight ? (
-                    <DevIcon iconConfig={tag} className="text-lg shrink-0" />
+                    <DevIcon iconConfig={tag} className="shrink-0 text-lg" />
                   ) : null}
                   <span className="text-sm font-medium">{tag.name}</span>
                 </div>

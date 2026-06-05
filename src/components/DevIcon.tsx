@@ -17,9 +17,7 @@ export function DevIcon({
   useEffect(() => setMounted(true), []);
 
   const deviconClass =
-    iconConfig.deviconClassLight &&
-    iconConfig.deviconClassDark &&
-    mounted
+    iconConfig.deviconClassLight && iconConfig.deviconClassDark && mounted
       ? resolvedTheme === "dark"
         ? iconConfig.deviconClassDark
         : iconConfig.deviconClassLight

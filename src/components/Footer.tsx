@@ -3,8 +3,8 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="py-8 border-t">
-      <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center md:text-left">
+    <footer className="border-t py-8">
+      <div className="mx-auto flex max-w-4xl flex-col items-center justify-between gap-4 text-center sm:flex-row md:text-left">
         <p className="text-muted-foreground text-sm">
           Developed by{" "}
           <Link
@@ -12,7 +12,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <span className="text-primary font-medium hover:underline hover:decoration-dotted hover:underline-offset-4 duration-200 transition-all">
+            <span className="text-primary font-medium transition-all duration-200 hover:underline hover:decoration-dotted hover:underline-offset-4">
               Bikash Shaw
             </span>
           </Link>

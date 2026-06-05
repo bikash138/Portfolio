@@ -29,14 +29,14 @@ class CalendarErrorBoundary extends React.Component<
   render() {
     if (this.state.hasError) {
       return (
-        <div className="flex flex-col items-center justify-center gap-3 py-8 text-muted-foreground">
-          <AlertCircle className="w-8 h-8 text-border" />
+        <div className="text-muted-foreground flex flex-col items-center justify-center gap-3 py-8">
+          <AlertCircle className="text-border h-8 w-8" />
           <p className="text-sm">GitHub activity unavailable right now.</p>
           <Link
             href={`https://github.com/${GITHUB_USERNAME}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs underline underline-offset-4 hover:text-foreground transition-colors"
+            className="hover:text-foreground text-xs underline underline-offset-4 transition-colors"
           >
             View profile on GitHub
           </Link>
@@ -46,7 +46,6 @@ class CalendarErrorBoundary extends React.Component<
     return this.props.children;
   }
 }
-
 
 const GitHubActivity = () => {
   const { resolvedTheme } = useTheme();
@@ -59,22 +58,22 @@ const GitHubActivity = () => {
   return (
     <section className="py-16">
       <div>
-        <div className="flex items-center justify-between mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-center md:text-left">
+        <div className="mb-12 flex items-center justify-between">
+          <h2 className="text-center text-3xl font-bold md:text-left md:text-4xl">
             GitHub Activity
           </h2>
           <Link
             href={`https://github.com/${GITHUB_USERNAME}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors border-2 border-dotted border-border rounded-lg px-3 py-2"
+            className="text-muted-foreground hover:text-foreground border-border flex items-center gap-2 rounded-lg border-2 border-dotted px-3 py-2 transition-colors"
           >
-            <Github className="w-5 h-5" />
-            <span className="hidden sm:inline text-sm">View Profile</span>
+            <Github className="h-5 w-5" />
+            <span className="hidden text-sm sm:inline">View Profile</span>
           </Link>
         </div>
 
-        <div className="rounded-xl bg-card border-2 border-dotted border-border p-6 overflow-x-auto">
+        <div className="bg-card border-border overflow-x-auto rounded-xl border-2 border-dotted p-6">
           <CalendarErrorBoundary>
             <GitHubCalendar
               username={GITHUB_USERNAME}
