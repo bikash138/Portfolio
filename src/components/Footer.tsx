@@ -17,7 +17,7 @@ const Footer = () => {
             </span>
           </Link>
         </p>
-        <p className="text-muted-foreground text-sm">India/Kolkata</p>
+        <p className="text-muted-foreground text-sm">Kolkata/India</p>
       </div>
     </footer>
   );

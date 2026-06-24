@@ -10,6 +10,9 @@ import trpc from "@/assets/tech-icons/tRPC.ico";
 import betterAuth from "@/assets/tech-icons/better-auth.ico";
 import webrtc from "@/assets/tech-icons/webrtc.png";
 import turborepo from "@/assets/tech-icons/turborepo.png";
+import corsair from "@/assets/tech-icons/corsair.svg";
+import Vercel from "@/assets/tech-icons/Vercel";
+import Drizzle from "@/assets/tech-icons/drizzle.ico";
 
 export type TechIcon = {
   name: string;
@@ -96,4 +99,7 @@ export const techIcons: Record<string, TechIcon> = {
   Zustand: { name: "Zustand", image: zustand },
   tRPC: { name: "tRPC", image: trpc },
   BetterAuth: { name: "Better Auth", image: betterAuth },
+  Corsair: { name: "Corsair", image: corsair },
+  AI_SDK: { name: "AI SDK", icon: Vercel },
+  Drizzle: { name: "Drizzle", image: Drizzle },
 };
