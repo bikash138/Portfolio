@@ -1,15 +1,15 @@
 export const blogPosts = [
   {
-    title: "Understanding the web",
+    title: "The Web Manual",
     description:
-      "These are some of learnings which I doumented while learning the web.",
+      "Documenting my journey of web development, from browser to full-stack patterns.",
     date: "January 31, 2026",
-    link: "https://chaicodeblogs.hashnode.dev",
+    link: "https://webbits.hashnode.dev",
   },
   {
     title: "Thinking in Backend Systems",
     description:
-      "Exploring web development, open source, and building in public.",
+      "Deep dives into backend architecture, system design, and DevOps which I learned while building and breaking things.",
     date: "January 15, 2026",
     link: "https://backendblogs.hashnode.dev/",
   },
