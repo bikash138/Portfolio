@@ -10,7 +10,7 @@ export const socialLinks = [
     iconClassName: "text-foreground",
   },
   {
-    href: "https://www.linkedin.com/in/bikash-shaw-5ab74727b/",
+    href: "https://www.linkedin.com/in/bikashshaw99/",
     icon: Linkedin,
     label: "LinkedIn",
     external: true,
