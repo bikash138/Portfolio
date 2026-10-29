@@ -7,7 +7,7 @@ const Skills = () => {
   return (
     <section className="py-16">
       <div>
-        <h2 className="mb-12 text-center text-3xl font-bold md:text-left md:text-4xl">
+        <h2 className="mb-12 text-center text-2xl font-bold sm:text-3xl md:text-left md:text-4xl">
           Skills & Tools
         </h2>
 

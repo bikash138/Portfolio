@@ -18,12 +18,43 @@ const NavBar: React.FC = () => {
   const pathname = usePathname();
   const { resolvedTheme, setTheme } = useTheme();
   const mounted = useMounted();
+  const [isHidden, setIsHidden] = React.useState(false);
+
+  React.useEffect(() => {
+    let previousScrollY = Math.max(0, window.scrollY);
+
+    const handleScroll = () => {
+      const scrollY = Math.max(
+        0,
+        Math.min(
+          window.scrollY,
+          document.documentElement.scrollHeight - window.innerHeight
+        )
+      );
+
+      if (scrollY <= 64) {
+        setIsHidden(false);
+        previousScrollY = scrollY;
+      } else if (Math.abs(scrollY - previousScrollY) >= 4) {
+        setIsHidden(scrollY > previousScrollY);
+        previousScrollY = scrollY;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const toggleTheme = () =>
     setTheme(resolvedTheme === "dark" ? "light" : "dark");
 
   return (
-    <div className="bg-background/80 border-border fixed top-0 right-0 left-0 z-50 border-b backdrop-blur-xl">
+    <div
+      onFocusCapture={() => setIsHidden(false)}
+      className={`bg-background/80 border-border fixed top-0 right-0 left-0 z-50 border-b backdrop-blur-xl transition-transform duration-200 ease-out motion-reduce:transition-none ${
+        isHidden ? "pointer-events-none -translate-y-full" : "translate-y-0"
+      }`}
+    >
       <div className="px-4 md:px-20">
         <div className="mx-auto flex max-w-4xl items-center justify-between gap-4 px-4 py-4 md:px-6">
           <nav

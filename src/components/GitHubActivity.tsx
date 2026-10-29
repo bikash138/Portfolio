@@ -78,7 +78,7 @@ const GitHubActivity = () => {
     <section id="github" className="py-16">
       <div>
         <div className="mb-12 flex items-center justify-between gap-2 sm:gap-4">
-          <h2 className="text-3xl font-bold md:text-left md:text-4xl">
+          <h2 className="text-2xl font-bold sm:text-3xl md:text-left md:text-4xl">
             GitHub Activity
           </h2>
           <Link

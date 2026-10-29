@@ -35,7 +35,7 @@ const Projects = () => {
   return (
     <section id="experience" className="scroll-mt-20 py-16">
       <div>
-        <h2 className="mb-12 text-center text-3xl font-bold md:text-left md:text-4xl">
+        <h2 className="mb-12 text-center text-2xl font-bold sm:text-3xl md:text-left md:text-4xl">
           Experience
         </h2>
 
@@ -84,7 +84,7 @@ const Projects = () => {
 
         <h2
           id="projects"
-          className="mb-12 scroll-mt-20 text-center text-3xl font-bold md:text-left md:text-4xl"
+          className="mb-12 scroll-mt-20 text-center text-2xl font-bold sm:text-3xl md:text-left md:text-4xl"
         >
           Projects
         </h2>
