@@ -25,8 +25,11 @@ const NavBar: React.FC = () => {
   return (
     <div className="bg-background/80 border-border fixed top-0 right-0 left-0 z-50 border-b backdrop-blur-xl">
       <div className="px-4 md:px-20">
-        <div className="mx-auto flex max-w-4xl items-center justify-between px-4 py-4 md:px-6">
-          <nav aria-label="Main navigation" className="flex items-center gap-8">
+        <div className="mx-auto flex max-w-4xl items-center justify-between gap-4 px-4 py-4 md:px-6">
+          <nav
+            aria-label="Main navigation"
+            className="flex min-w-0 flex-1 items-center justify-between gap-2 sm:flex-none sm:justify-start sm:gap-8"
+          >
             {navLinks.map((link) => {
               const isActive =
                 link.href === "/resume"
@@ -36,7 +39,7 @@ const NavBar: React.FC = () => {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-sm font-medium transition-colors ${
+                  className={`text-xs font-medium whitespace-nowrap transition-colors sm:text-sm ${
                     isActive
                       ? "text-foreground"
                       : "text-muted-foreground hover:text-foreground"
@@ -48,7 +51,7 @@ const NavBar: React.FC = () => {
             })}
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex shrink-0 items-center">
             <button
               onClick={toggleTheme}
               className="text-muted-foreground hover:text-foreground hover:bg-muted cursor-pointer rounded-lg p-2 transition-colors"
