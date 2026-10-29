@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useMounted } from "@/lib/use-mounted";
 import GitHubCalendar from "react-github-calendar";
 import Link from "next/link";
 import { Github, AlertCircle } from "lucide-react";
@@ -49,9 +50,7 @@ class CalendarErrorBoundary extends React.Component<
 
 const GitHubActivity = () => {
   const { resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
+  const mounted = useMounted();
 
   const isDark = mounted && resolvedTheme === "dark";
 

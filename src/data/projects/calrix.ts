@@ -8,7 +8,7 @@ export const calrix: Project = {
   slug: "calrix",
   description:
     "Calrix is an agentic AI platform that reads, sorts, and ranks your gmail, drafts replies that sound like you, guards your google calendar, and chases down the replies you're still waiting on.",
-  preview: { src: calrixBanner, alt: "Urbanease preview" },
+  preview: { src: calrixBanner, alt: "Calrix preview" },
   icon: CalrixIcon,
   tags: [
     techIcons.Nextjs,

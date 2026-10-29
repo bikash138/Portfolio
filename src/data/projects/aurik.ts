@@ -8,7 +8,7 @@ export const aurik: Project = {
   slug: "aurik",
   description:
     "Aurik is a self-hosted, OIDC-compliant identity platform built to understand OAuth 2.0 from the ground up — and to replace third-party auth services with a single reusable auth server across projects.",
-  preview: { src: aurikBanner, alt: "Ship0 preview" },
+  preview: { src: aurikBanner, alt: "Aurik preview" },
   icon: AurikIcon,
   tags: [
     techIcons.Nextjs,

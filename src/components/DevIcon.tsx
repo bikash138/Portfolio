@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useMounted } from "@/lib/use-mounted";
 import { useTheme } from "next-themes";
 import type { TechIcon } from "@/data/tech-icons";
 
@@ -12,9 +13,7 @@ export function DevIcon({
   className?: string;
 }) {
   const { resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
+  const mounted = useMounted();
 
   const deviconClass =
     iconConfig.deviconClassLight && iconConfig.deviconClassDark && mounted

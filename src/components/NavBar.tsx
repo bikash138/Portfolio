@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 import { Sun, Moon } from "lucide-react";
+import { useMounted } from "@/lib/use-mounted";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -16,9 +17,7 @@ const navLinks = [
 const NavBar: React.FC = () => {
   const pathname = usePathname();
   const { resolvedTheme, setTheme } = useTheme();
-  const [mounted, setMounted] = React.useState(false);
-
-  React.useEffect(() => setMounted(true), []);
+  const mounted = useMounted();
 
   const toggleTheme = () =>
     setTheme(resolvedTheme === "dark" ? "light" : "dark");
@@ -27,7 +26,7 @@ const NavBar: React.FC = () => {
     <div className="bg-background/80 border-border fixed top-0 right-0 left-0 z-50 border-b backdrop-blur-xl">
       <div className="px-4 md:px-20">
         <div className="mx-auto flex max-w-4xl items-center justify-between px-4 py-4 md:px-6">
-          <nav className="flex items-center gap-8">
+          <nav aria-label="Main navigation" className="flex items-center gap-8">
             {navLinks.map((link) => {
               const isActive =
                 link.href === "/resume"

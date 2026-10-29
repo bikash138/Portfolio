@@ -1,10 +1,18 @@
 import { ExternalLink } from "lucide-react";
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata({
+  title: "Resume | Bikash Shaw",
+  description:
+    "View and download Bikash Shaw's resume, including software engineering experience at Sony Logistics, full stack projects, and technical skills.",
+  path: "/resume",
+});
 
 const RESUME_PDF_URL = "/resume.pdf";
 
 export default function ResumePage() {
   return (
-    <main className="py-12">
+    <article className="py-12">
       <h1 className="mb-2 text-3xl font-bold md:text-4xl">Resume</h1>
       <p className="mb-8 text-sm text-gray-400">
         View and download my professional resume.
@@ -26,6 +34,6 @@ export default function ResumePage() {
           className="h-[calc(100vh-12rem)] min-h-[600px] w-full border-0"
         />
       </div>
-    </main>
+    </article>
   );
 }

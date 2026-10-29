@@ -1,5 +1,6 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useMounted } from "@/lib/use-mounted";
 import { useTheme } from "next-themes";
 import { ExternalLink, Github } from "lucide-react";
 import {
@@ -25,9 +26,7 @@ import { DevIcon } from "@/components/DevIcon";
 const Projects = () => {
   const [visibleCards, setVisibleCards] = useState(4);
   const { resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
+  const mounted = useMounted();
 
   const handleMore = () => {
     setVisibleCards((prev) => prev + 2);

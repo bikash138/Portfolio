@@ -58,6 +58,7 @@ export default function DetailPage({ kind, item }: Props) {
               alt={project.preview.alt}
               fill
               className="object-cover"
+              placeholder="blur"
               priority
               sizes="(max-width: 896px) 100vw, 896px"
             />
@@ -90,9 +91,16 @@ export default function DetailPage({ kind, item }: Props) {
         )}
 
         <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <h1 className="text-3xl font-bold tracking-tight md:text-4xl">
-            {project.title}
-          </h1>
+          <div>
+            <h1 className="text-3xl font-bold tracking-tight md:text-4xl">
+              {project.title}
+            </h1>
+            {kind === "experience" && (
+              <p className="text-muted-foreground mt-2 text-sm">
+                {item.position} · {item.startLabel}–Present · {item.location}
+              </p>
+            )}
+          </div>
           <div className="flex items-center gap-3">
             {project.link && (
               <Link

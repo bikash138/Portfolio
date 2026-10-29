@@ -14,11 +14,11 @@ const Hero = () => {
       <div className="flex w-full flex-col items-center gap-8 md:flex-row md:items-start md:gap-12">
         <div className="border-border relative order-1 h-32 w-32 shrink-0 overflow-hidden rounded-lg border-2 md:order-2 md:h-40 md:w-40">
           <Image
-            alt="self picture"
+            alt="Bikash Shaw, full stack developer"
             src={self}
             fill
             className="object-cover"
-            priority
+            loading="eager"
             placeholder="blur"
           />
         </div>
@@ -31,16 +31,19 @@ const Hero = () => {
           </p>
 
           <p className="text-muted-foreground mb-6 text-lg leading-relaxed md:text-xl">
-            I mostly enjoys{" "}
+            I&apos;m a full stack developer based in India, focused on{" "}
             <span className="text-primary font-medium">building</span> scalable{" "}
             <span className="text-primary font-medium">backend systems</span>{" "}
             with <span className="text-primary font-medium">applied AI</span>{" "}
-            using TypeScript. Currently, I&apos;m learning backend topics while{" "}
-            <span className="text-primary font-medium">building</span> projects
-            and <span className="text-primary font-medium">documenting</span>{" "}
-            through blogs. I would love to{" "}
-            <span className="text-primary font-medium">collaborate</span> with
-            people with similar mindset.
+            using TypeScript, Node.js, and Next.js. As a software engineer at{" "}
+            <Link
+              href="/sony-logistics"
+              className="text-primary font-medium hover:underline"
+            >
+              Sony Logistics
+            </Link>
+            , I build tools for logistics operations. I also share my work
+            through open-source projects and technical blogs.
           </p>
 
           <p className="text-muted-foreground mb-3 text-base">

@@ -6,6 +6,9 @@ import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
+import { site } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
+import { identitySchema } from "@/lib/structured-data";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -13,21 +16,35 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Bikash Shaw",
-  description: "Created by Bikash",
+  metadataBase: new URL(site.url),
+  title: site.title,
+  description: site.description,
+  applicationName: "Bikash Shaw Portfolio",
+  authors: [{ name: site.name, url: site.url }],
+  creator: site.name,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
-    title: "Bikash Shaw",
-    description:
-      "Full Stack Developer, passionate for building scalable softwares.",
-    url: "https://bikashshaw.in",
-    siteName: "Bikash Shaw",
+    title: site.title,
+    description: site.description,
+    siteName: site.name,
+    locale: "en_IN",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bikash Shaw",
-    description:
-      "Full Stack Developer, passionate for building scalable softwares.",
+    title: site.title,
+    description: site.description,
+    creator: "@Bikash__Shaw",
   },
 };
 
@@ -45,8 +62,8 @@ export default function RootLayout({
           href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
         />
       </head>
-      <Analytics />
       <body>
+        <JsonLd data={identitySchema} />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -54,11 +71,13 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <TooltipProvider>
-            <div className="bg-background text-foreground min-h-screen pt-16">
+            <div className="bg-background text-foreground flex min-h-dvh flex-col pt-16">
               <NavBar />
-              <div className="px-4 md:px-20">
-                <div className="mx-auto max-w-4xl px-4 md:px-6">
-                  {children}
+              <div className="flex flex-1 flex-col px-4 md:px-20">
+                <div className="mx-auto flex w-full max-w-4xl flex-1 flex-col px-4 md:px-6">
+                  <main id="main-content" className="flex flex-1 flex-col">
+                    {children}
+                  </main>
                   <Footer />
                 </div>
               </div>
@@ -66,8 +85,8 @@ export default function RootLayout({
             </div>
           </TooltipProvider>
         </ThemeProvider>
+        <Analytics />
       </body>
-      <Analytics />
     </html>
   );
 }
