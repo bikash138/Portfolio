@@ -1,4 +1,5 @@
 import React from "react";
+import BetterStack from "@/assets/tech-icons/BetterStack";
 import Inngest from "@/assets/tech-icons/Inngest";
 import e2bIcon from "@/assets/tech-icons/e2b.png";
 import Langchain from "@/assets/tech-icons/Langchain";
@@ -24,6 +25,7 @@ export type TechIcon = {
 };
 
 export const techIcons: Record<string, TechIcon> = {
+  BetterStack: { name: "Better Stack", icon: BetterStack },
   Inngest: {
     name: "Inngest",
     icon: Inngest,
@@ -34,9 +36,9 @@ export const techIcons: Record<string, TechIcon> = {
   },
   Nextjs: {
     name: "Next.js",
-    deviconClass: "devicon-nextjs-plain",
+    deviconClass: "devicon-nextjs-plain dark:text-zinc-300",
     deviconClassLight: "devicon-nextjs-plain colored",
-    deviconClassDark: "devicon-nextjs-plain",
+    deviconClassDark: "devicon-nextjs-plain dark:text-zinc-300",
   },
   Clerk: { name: "Clerk", image: clerk },
   Express: {

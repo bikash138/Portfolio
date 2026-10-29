@@ -13,6 +13,8 @@ import Link from "next/link";
 import { Button } from "./ui/button";
 import Image from "next/image";
 import { projects } from "@/data/projects/index";
+import sonyLogisticsIcon from "@/assets/experience-icons/sony-logistics.svg";
+import { sonyLogistics } from "@/data/experience/sony-logistics";
 import {
   Tooltip,
   TooltipContent,
@@ -32,12 +34,58 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-16">
+    <section id="experience" className="scroll-mt-20 py-16">
       <div>
         <h2 className="mb-12 text-center text-3xl font-bold md:text-left md:text-4xl">
-          Projects I&apos;ve Built
+          Experience
         </h2>
 
+        <Link
+          href={`/${sonyLogistics.slug}`}
+          className="group focus-visible:outline-ring mb-12 block rounded-xl focus-visible:outline-2 focus-visible:outline-offset-4"
+        >
+          <Card className="bg-card border-border group-hover:border-muted-foreground/25 group-hover:bg-muted/25 border-2 border-dotted transition-colors">
+            <CardHeader>
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="bg-muted shrink-0 rounded-lg p-2">
+                    <Image
+                      src={sonyLogisticsIcon}
+                      alt="Sony Logistics logo"
+                      width={48}
+                      height={48}
+                      className="dark:brightness-0 dark:invert"
+                    />
+                  </div>
+                  <div>
+                    <CardTitle className="text-foreground text-lg font-semibold">
+                      {sonyLogistics.title}
+                    </CardTitle>
+                    <p className="text-muted-foreground mt-1 text-sm italic">
+                      {sonyLogistics.position}
+                    </p>
+                  </div>
+                </div>
+                <div className="text-muted-foreground flex shrink-0 flex-col gap-1 text-sm sm:text-right">
+                  <p>
+                    <time dateTime={sonyLogistics.startDate}>
+                      {sonyLogistics.startLabel}
+                    </time>
+                    –Present
+                  </p>
+                  <p>{sonyLogistics.location}</p>
+                </div>
+              </div>
+            </CardHeader>
+          </Card>
+        </Link>
+
+        <h2
+          id="projects"
+          className="mb-12 scroll-mt-20 text-center text-3xl font-bold md:text-left md:text-4xl"
+        >
+          Projects
+        </h2>
         <div className="grid gap-8 md:grid-cols-2 md:items-stretch">
           {projects.slice(0, visibleCards).map((project, index) => (
             <Card

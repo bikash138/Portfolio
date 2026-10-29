@@ -8,7 +8,7 @@ import { Sun, Moon } from "lucide-react";
 
 const navLinks = [
   { label: "Home", href: "/" },
-  { label: "Project", href: "/#projects" },
+  { label: "Experience", href: "/#experience" },
   { label: "Blog", href: "/#blog" },
   { label: "Resume", href: "/resume" },
 ];
