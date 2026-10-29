@@ -43,32 +43,35 @@ const Projects = () => {
           href={`/${sonyLogistics.slug}`}
           className="group focus-visible:outline-ring mb-12 block rounded-xl focus-visible:outline-2 focus-visible:outline-offset-4"
         >
-          <Card className="bg-card border-border group-hover:border-muted-foreground/25 group-hover:bg-muted/25 border-2 border-dotted transition-colors">
-            <CardHeader>
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="bg-muted shrink-0 rounded-lg p-2">
+          <Card className="bg-card border-border group-hover:border-muted-foreground/25 group-hover:bg-muted/25 border-2 border-dotted py-4 transition-colors sm:py-6">
+            <CardHeader className="px-2 min-[360px]:px-3 sm:px-6">
+              <div className="flex items-center justify-between gap-2 sm:items-start sm:gap-4">
+                <div className="flex min-w-0 items-center gap-2 sm:gap-3">
+                  <div className="bg-muted shrink-0 rounded-lg p-1 min-[360px]:p-1.5 sm:p-2">
                     <Image
                       src={sonyLogisticsIcon}
                       alt="Sony Logistics logo"
                       width={48}
                       height={48}
-                      className="dark:brightness-0 dark:invert"
+                      className="h-6 w-6 min-[360px]:h-7 min-[360px]:w-7 sm:h-12 sm:w-12 dark:brightness-0 dark:invert"
                     />
                   </div>
                   <div>
-                    <CardTitle className="text-foreground text-lg font-semibold">
+                    <CardTitle className="text-foreground text-[13px] leading-snug font-semibold whitespace-nowrap min-[360px]:text-sm sm:text-lg">
                       {sonyLogistics.title}
                     </CardTitle>
-                    <p className="text-muted-foreground mt-1 text-sm italic">
+                    <p className="text-muted-foreground mt-1 text-[10px] whitespace-nowrap italic min-[360px]:text-xs sm:text-sm">
                       {sonyLogistics.position}
                     </p>
                   </div>
                 </div>
-                <div className="text-muted-foreground flex shrink-0 flex-col gap-1 text-sm sm:text-right">
+                <div className="text-muted-foreground flex shrink-0 flex-col gap-1 text-right text-[10px] min-[360px]:text-[11px] sm:text-sm">
                   <p>
                     <time dateTime={sonyLogistics.startDate}>
-                      {sonyLogistics.startLabel}
+                      <span className="sm:hidden">Sep 2026</span>
+                      <span className="hidden sm:inline">
+                        {sonyLogistics.startLabel}
+                      </span>
                     </time>
                     –Present
                   </p>

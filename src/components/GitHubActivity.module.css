@@ -1,0 +1,21 @@
+.calendar > article {
+  /* The calendar library sets an inline max-content width. */
+  width: 100% !important;
+}
+
+.calendar :global(svg.react-activity-calendar__calendar) {
+  width: 100%;
+  height: auto;
+}
+
+@media (width < 640px) {
+  .calendar :global(.react-activity-calendar__legend-month) {
+    font-size: 10px;
+  }
+
+  .calendar
+    :global(.react-activity-calendar__legend-month)
+    > text:nth-child(even) {
+    display: none;
+  }
+}
